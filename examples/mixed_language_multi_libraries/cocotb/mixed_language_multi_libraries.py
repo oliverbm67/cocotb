@@ -6,6 +6,7 @@ from cocotb.runner import get_runner
 from cocotb.triggers import Timer, RisingEdge
 from cocotb.clock import Clock
 
+
 @cocotb.test()
 async def sanity_test(dut):
     """A simple test of the RTL to confirm the simulation is running"""
@@ -18,7 +19,6 @@ async def sanity_test(dut):
     dut.sig_in.value = 1
     await RisingEdge(dut.clk)
     assert dut.sig_out.value == 15
-
 
 
 def mixed_lang_multi_lib_runner():
