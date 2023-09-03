@@ -31,12 +31,12 @@ def mixed_lang_multi_lib_runner():
     runner = get_runner(sim)
 
     runner.build(
-        verilog_sources=[rtl_dir + "reg_b.v"],
+        verilog_sources=[rtl_dir + "reg_b_v.v"],
         vhdl_sources=[rtl_dir + "reg_b.vhd"],
         hdl_library="cell_lib",
     )
     runner.build(
-        verilog_sources=[rtl_dir + "reg_a.v"], vhdl_sources=[rtl_dir + "reg_a.vhd"]
+        verilog_sources=[rtl_dir + "reg_a_v.v"], vhdl_sources=[rtl_dir + "reg_a.vhd"]
     )
     runner.build(vhdl_sources=[rtl_dir + "top.vhd"], hdl_toplevel="top")
     runner.test(hdl_toplevel="top", test_module="mixed_language_multi_libraries")
