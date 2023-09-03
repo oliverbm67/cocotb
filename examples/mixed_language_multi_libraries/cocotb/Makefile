@@ -4,15 +4,15 @@ SIM ?= questa
 TOPLEVEL_LANG ?= vhdl
 
 # Compilation in default libraries
-VHDL_SOURCES = $(PWD)/../hdl/reg_a.vhd $(PWD)/../hdl/top.vhd
-VERILOG_SOURCES = $(PWD)/../hdl/reg_a_v.v
+VHDL_SOURCES_work = $(PWD)/../hdl/reg_a.vhd $(PWD)/../hdl/top.vhd
+VERILOG_SOURCES_work = $(PWD)/../hdl/reg_a_v.v
 
 # Compilation in cell_lib
 VHDL_SOURCES_cell_lib = $(PWD)/../hdl/reg_b.vhd
 VERILOG_SOURCES_cell_lib = $(PWD)/../hdl/reg_b_v.v
 
 # Define library order
-VHDL_LIB_ORDER = cell_lib
+VHDL_LIB_ORDER = cell_lib work
 
 # HDL top level
 TOPLEVEL = top
