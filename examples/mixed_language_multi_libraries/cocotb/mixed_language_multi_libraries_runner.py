@@ -22,3 +22,29 @@ async def sanity_test(dut):
     await RisingEdge(dut.clk)
     await Timer(1, units="ns")
     assert dut.sig_out.value == 15
+
+
+def mixed_lang_multi_lib_runner():
+    """cocotb python runner"""
+    hdl_toplevel_lang = "vhdl"
+    sim = "questa"
+
+    rtl_dir = os.getcwd() + "/../hdl/"
+
+    runner = get_runner(sim)
+
+    runner.build(
+        verilog_sources=[rtl_dir + "reg_b_v.v"],
+        vhdl_sources=[rtl_dir + "reg_b.vhd"],
+        hdl_library="cell_lib",
+    )
+    runner.build(
+        verilog_sources=[rtl_dir + "reg_a_v.v"], vhdl_sources=[rtl_dir + "reg_a.vhd"],
+        hdl_library="default_lib")
+
+    runner.build(vhdl_sources=[rtl_dir + "top.vhd"], hdl_toplevel="top")
+    runner.test(hdl_toplevel="top", test_module="mixed_language_multi_libraries_runner")
+
+
+if __name__ == "__main__":
+    mixed_lang_multi_lib_runner()

@@ -6,6 +6,9 @@ use ieee.std_logic_1164.all;
 library cell_lib;
 use cell_lib.all;
 
+library default_lib;
+use default_lib.all;
+
 entity top is
     port(
         clk                     : in  std_logic;
@@ -20,7 +23,7 @@ architecture rtl of top is
 begin
 
 -- Verilog module from default library
-reg_verilog_work : entity reg_a_v
+reg_verilog_default : entity default_lib.reg_a_v
 port map(
     clk     => clk,
     rstn    => rstn,
@@ -38,7 +41,7 @@ port map(
 );
 
 -- VHDL module from default library
-reg_vhdl_work : entity reg_a
+reg_vhdl_default : entity default_lib.reg_a
 port map(
     clk     => clk,
     rst_n   => rstn,
